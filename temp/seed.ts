@@ -2,6 +2,7 @@ require('dotenv').config();
 import { connectDatabase } from '../src/database';
 import { Listing } from '../src/lib/type';
 import { ObjectId } from 'mongodb';
+
 const seed = async () => {
   try {
     console.log('[seed] : running.....');
@@ -45,6 +46,12 @@ const seed = async () => {
         rating: 3,
       },
     ];
+
+    for (const listing of listings) {
+      await db.listings.insertOne(listing);
+    }
+
+    console.log('[SEED]: Success');
   } catch (error) {
     throw new Error('Failed');
   }
