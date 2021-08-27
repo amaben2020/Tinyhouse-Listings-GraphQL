@@ -33,3 +33,6 @@ export const listingResolver: IResolvers = {
     id: (listing: Listing): string => listing._id.toString(),
   },
 };
+function listings(listings: any) {
+  throw new Error('Function not implemented.');
+}
